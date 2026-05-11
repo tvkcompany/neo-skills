@@ -1,1 +1,10 @@
+# Miscellaneous
 .DS_Store
+
+# Environment variable related
+.env
+.env.*
+!.env.example
+
+# Cursor related
+.cursor/mcp.json
