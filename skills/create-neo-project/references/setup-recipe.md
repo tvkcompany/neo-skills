@@ -206,7 +206,7 @@ Delete Flutter's default `lib/main.dart` counter app when replacing it.
 When auto_route or riverpod_annotation files were added or changed:
 
 ```sh
-(fvm) dart run build_runner build --delete-conflicting-outputs
+(fvm) dart run build_runner build
 ```
 
 ## Style
