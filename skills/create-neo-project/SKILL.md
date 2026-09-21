@@ -12,6 +12,7 @@ Keep output concise. Do not commit, push, create branches, or open PRs. Leave al
 
 References:
 
+- [Latest version](references/latest-version.md) - pin the git dependency to the latest Neo release tag.
 - [Setup recipe](references/setup-recipe.md) - pubspec, fonts, analyzer, app shell, packages, verification.
 
 ## When to use
@@ -59,6 +60,8 @@ Detect Flutter tooling:
 
 Verify the chosen Flutter command is available. If not, stop with the missing command.
 
+Resolve `{VERSION}` with [Latest version](references/latest-version.md) **before** the confirmation plan. Prefer a release tag. If it cannot be determined, use `main`.
+
 ### 3. Confirm before executing
 
 Print a compact plan, then **stop and wait for explicit confirmation**. Do not create folders, edit files, or run Flutter until the user says to proceed.
@@ -69,12 +72,13 @@ Print a compact plan, then **stop and wait for explicit confirmation**. Do not c
 **Mode:** in-place | sibling | existing
 **Target:** /absolute/path
 **Flutter:** fvm flutter | flutter
+**Neo:** {VERSION} (git tag)
 
 ### Will run
 - `flutter create ...` (omit for existing)
 
 ### Will change
-- `pubspec.yaml`: neo git dep, packages, fonts
+- `pubspec.yaml`: neo git dep at tag `{VERSION}`, packages, fonts
 - `analysis_options.yaml`: analyzer + formatter
 - `lib/main.dart`: NeoInitializer, ProviderScope, NeoApp
 - `lib/router/app_router.dart` and `lib/screens/welcome_screen.dart` (new projects only, or existing only if they asked for a starter)
@@ -105,7 +109,7 @@ Follow [Setup recipe](references/setup-recipe.md).
 - If the app uses `MaterialApp` / `CupertinoApp` routes that are not a `RouterConfig`, stop and ask before introducing auto_route. `NeoApp` requires `routerConfig`.
 - Do not add auto_route (or its generator) when the existing router already satisfies `NeoApp`.
 
-Prefer the published install page via Neo Docs MCP (`/install`) when available. If the MCP is missing, use the recipe file. Do not invent older font filenames or `phosphor_flutter`.
+Prefer the published install page via Neo Docs MCP (`/install`) when available. If the MCP is missing, use the recipe file. Always set `neo.git.ref` to `{VERSION}` even if an example on the install page shows another value. Do not invent older font filenames or `phosphor_flutter`.
 
 ### 5. Verify
 
@@ -127,6 +131,7 @@ Skip `build_runner` when you did not add codegen annotations. If analyze fails b
 
 **Mode:** ...
 **Path:** ...
+**Neo:** {VERSION}
 
 ### Applied
 - short list of files / commands
@@ -146,6 +151,7 @@ Drop empty sections.
 ## Edge cases
 
 - **Already has Neo:** stop; point to `update-neo`.
+- **Latest Neo version unknown:** use `ref: main` and say so in the plan.
 - **SSH / GitHub access failure** on `flutter pub get`: explain that Neo is a private git dependency (`git@github.com:tvkcompany/neo.git`) and that SSH must work. Do not switch to HTTPS or a path dependency unless the user asks.
 - **Dirty git tree (existing):** warn, include it in the confirmation plan, continue only if they confirm.
 - **Invalid project name:** ask for a valid Dart package name.

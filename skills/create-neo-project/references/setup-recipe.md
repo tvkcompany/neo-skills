@@ -20,11 +20,13 @@ Use `fvm flutter` / `fvm dart` when `.fvmrc` or `.fvm/` exists at the project ro
 
 ### Neo git dependency
 
+`{VERSION}` is the latest Neo release tag from [Latest version](latest-version.md). If that cannot be determined, use `main`. Do not use `production` or `development`.
+
 ```yaml
 neo:
   git:
     url: git@github.com:tvkcompany/neo.git
-    ref: production
+    ref: {VERSION}
 ```
 
 Do not add Neo with `flutter pub add neo` from pub.dev.
