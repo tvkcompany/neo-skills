@@ -20,9 +20,9 @@ The latest release is the first `<Update>` whose `tags` include `"Latest"`:
 
 ## Fallback: docs website
 
-If the MCP is missing or fails, fetch `https://neo.tvk.company/release-notes`. That URL is the **rendered** page, not MDX — do **not** look for `<Update>` tags.
+If the MCP is missing or fails, fetch `https://neo.tvk.company/release-notes.md` (Mintlify markdown, not the HTML page). Parse the same `<Update label="..." tags={["Latest"]}>` shape as the MCP source.
 
-The latest version is the first heading that matches `^\d+\.\d+\.\d+$` (newest is at the top). Ignore prerelease labels.
+If `.md` is unavailable, fetch `https://neo.tvk.company/release-notes` and take the first `data-component-part="update-label"` whose nearby `update-tag` is `Latest`, else the first `update-label` matching `^\d+\.\d+\.\d+$`.
 
 Do not scrape unrelated pages. Do not use GitHub as the first fallback.
 
