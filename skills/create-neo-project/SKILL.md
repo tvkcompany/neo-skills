@@ -29,7 +29,7 @@ Do not use it to upgrade Neo in a project that already depends on it. That is `u
 
 ### 1. Detect mode
 
-Inspect the **current working directory only**. Do not walk into sibling workspace roots (for example `neo`, `neo-docs`, `playground`) to guess a target.
+Inspect the **current working directory only**. Do not walk into sibling workspace roots (for example `neo`, `neo-docs`, `neo_playground`) to guess a target.
 
 Find `pubspec.yaml` in the current directory (not a parent).
 
@@ -39,7 +39,7 @@ Find `pubspec.yaml` in the current directory (not a parent).
 2. **In-place create** — no Flutter `pubspec.yaml`, and the directory is empty aside from ignorable files: `.git`, `.gitignore`, `.DS_Store`, `.cursor`, empty `README` / `README.md`, `LICENSE`. Mode is `in-place`.
 3. **Sibling create** — anything else (other projects, files, or a non-empty folder). Mode is `sibling`.
 
-If the cwd is itself a Neo workspace root (`neo`, `neo-docs`, `neo-skills`, `playground`) and the user did not name a new project path, stop and ask where to create the app. Do not scaffold inside those repos.
+If the cwd is itself a Neo workspace root (`neo`, `neo-docs`, `neo-skills`, `neo_playground`) and the user did not name a new project path, stop and ask where to create the app. Do not scaffold inside those repos.
 
 ### 2. Gather inputs
 
@@ -155,5 +155,5 @@ Drop empty sections.
 - **SSH / GitHub access failure** on `flutter pub get`: explain that Neo is a private git dependency (`git@github.com:tvkcompany/neo.git`) and that SSH must work. Do not switch to HTTPS or a path dependency unless the user asks.
 - **Dirty git tree (existing):** warn, include it in the confirmation plan, continue only if they confirm.
 - **Invalid project name:** ask for a valid Dart package name.
-- **Cwd is a Neo framework/docs/skills/playground checkout:** ask for an explicit target path.
+- **Cwd is a Neo framework/docs/skills/neo_playground checkout:** ask for an explicit target path.
 - **User wants a sidebar:** after the app shell works, point them at https://neo.tvk.company/layouts/sidebar. Do not generate a full sidebar starter unless they explicitly ask in a follow-up.
