@@ -1,0 +1,23 @@
+---
+description: Neo Skills is for people building apps with Neo, not for developing Neo itself
+alwaysApply: true
+---
+
+# Neo Skills
+
+Agent skills for people using [Neo](https://neo.tvk.company/) in their own Flutter apps.
+
+This repo is not for developing the Neo package, and it is not for the playground. Those are separate projects. Use these skills when setting up or upgrading Neo in an app that depends on it.
+
+## Skills
+
+- `skills/create-neo-project` — create a Flutter app with Neo, or add Neo to an existing app. Confirm the plan before writing files.
+- `skills/update-neo` — bump the `neo` dependency, read the release notes for every version in between, and apply breaking changes.
+
+Install into an agent with:
+
+```sh
+npx skills add tvkcompany/neo-skills
+```
+
+Docs: https://neo.tvk.company/install and https://neo.tvk.company/release-notes.
