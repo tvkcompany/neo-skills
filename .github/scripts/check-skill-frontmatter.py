@@ -52,7 +52,9 @@ def scalar(parts: list[str]) -> str | None:
     if len(head) >= 2 and head[0] == head[-1] and head[0] in "\"'":
         return head[1:-1].strip()
     if head in NULL_VALUES:
-        return ""
+        if tail and tail[0].startswith(("-", "[", "{")):
+            return None
+        return " ".join(tail).strip()
     if tail:
         return " ".join([head, *tail]).strip()
     return head.strip()
